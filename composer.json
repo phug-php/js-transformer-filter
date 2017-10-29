@@ -1,0 +1,19 @@
+{
+    "name": "phug/js-transformer-filter",
+    "type": "library",
+    "keywords": ["js-transformer"],
+    "description": "Allow to use any js-transformer as filter in Phug",
+    "license": "MIT",
+    "homepage": "https://phug-lang.com",
+    "require": {
+        "js-transformer/js-transformer": "^1.0"
+    },
+    "require-dev": {
+        "phug/dev-tool": "^0.1.11"
+    },
+    "autoload": {
+        "psr-0": {
+            "Phug\\": "./src"
+        }
+    }
+}
