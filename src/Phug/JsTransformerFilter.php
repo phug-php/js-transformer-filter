@@ -44,7 +44,7 @@ class JsTransformerFilter
         return $this->transformer;
     }
 
-    public function parse()
+    public function __invoke()
     {
         return $this->getTransformer()->call($this->getTransformerName(), func_get_args());
     }
