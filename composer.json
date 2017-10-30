@@ -15,5 +15,10 @@
         "psr-0": {
             "Phug\\": "./src"
         }
+    },
+    "extra": {
+        "npm-confirm": {
+            "jstransformer": "It allows you to use any jstransformer npm package as filter by adding it in your extra.npm section of composer.json."
+        }
     }
 }
