@@ -40,4 +40,4 @@ after_success:
 
 addons:
   code_climate:
-    repo_token: -
+    repo_token: eec94e4e24921f62b8ad23617dfc0d94a859d2f9cc74bc8935168815d3ab879a
