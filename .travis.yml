@@ -1,40 +1,33 @@
 language: php
 
 git:
-    depth: 5
+  depth: 5
 
 php:
-    - 5.5
-    - 5.6
-    - 7.0
-    - 7.1
-    - 7.2
+  - 5.5
+  - 5.6
+  - 7.0
+  - 7.1
+  - 7.2
 
 matrix:
-    include:
-        - php: hhvm
-          dist: trusty
-          sudo: required
-
-script:
-    - vendor/bin/phug-dev check --report --coverage-php-version=5.6
-
-notifications:
-    slack: phug:nzXFnxhU14RWK2EQSDL0u08z
-
-env:
-  - TRAVIS_NODE_VERSION="7"
+  include:
+    - php: hhvm
+      dist: trusty
+      sudo: required
 
 install:
-  - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
-  - npm install
-
-before_script:
   - travis_retry composer self-update
-  - travis_retry composer install --no-interaction --prefer-source --dev
+  - travis_retry composer install
+
+script:
+  - vendor/bin/phug-dev check --report --coverage-php-version=5.6
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
+
+notifications:
+  slack: phug:nzXFnxhU14RWK2EQSDL0u08z
 
 addons:
   code_climate:
