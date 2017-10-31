@@ -1,6 +1,7 @@
 <?php
 
 namespace Phug\Test;
+
 use JsTransformer\JsTransformer;
 use NodejsPhpFallback\NodejsPhpFallback;
 use Phug\JsTransformerExtension;
@@ -18,14 +19,14 @@ class JsTransformerExtensionTest extends \PHPUnit_Framework_TestCase
             $objects = scandir($dir);
             foreach ($objects as $object) {
                 if ($object !== '.' && $object !== '..') {
-                    if (is_dir($dir . '/' . $object)) {
-                        static::removeDirectory($dir . '/' . $object);
+                    if (is_dir($dir.'/'.$object)) {
+                        static::removeDirectory($dir.'/'.$object);
                         continue;
                     }
                     // move before delete to avoid Windows too long name error
                     try {
-                        @rename($dir . '/' . $object, sys_get_temp_dir() . '/to-delete');
-                        @unlink(sys_get_temp_dir() . '/to-delete');
+                        @rename($dir.'/'.$object, sys_get_temp_dir().'/to-delete');
+                        @unlink(sys_get_temp_dir().'/to-delete');
                     } catch (\Exception $e) {
                     }
                 }
@@ -76,7 +77,7 @@ class JsTransformerExtensionTest extends \PHPUnit_Framework_TestCase
         Phug::addExtension(JsTransformerExtension::class);
 
         self::assertSame(
-            "<style>a{color:red}</style>",
+            '<style>a{color:red}</style>',
             preg_replace('/\s/', '', Phug::render("style: :less(compress=true)\n  a {\n    color: red;\n  }\n"))
         );
         static::removeDirectory("$dir/jstransformer-less");

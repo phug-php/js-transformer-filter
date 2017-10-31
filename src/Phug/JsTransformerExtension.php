@@ -34,7 +34,7 @@ class JsTransformerExtension extends AbstractExtension
                     return $transformer->isInstalled($package)
                         ? new JsTransformerFilter($transformer, $package)
                         : null;
-                }
+                },
             ],
         ];
     }
