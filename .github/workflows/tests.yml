@@ -46,6 +46,6 @@ jobs:
         MULTI_TESTER_LABELS: install
 
     - name: Run test suite
-      run: vendor/bin/phug-dev check --report
+      run: vendor/bin/phpunit --no-coverage --no-interaction
       env:
         MULTI_TESTER_LABELS: script

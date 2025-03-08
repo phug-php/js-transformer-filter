@@ -53,7 +53,7 @@ jobs:
         composer update --prefer-dist ${{ matrix.setup != 'next' && format('--prefer-{0}', matrix.setup) || '' }} --no-progress
 
     - name: Run test suite
-      run: vendor/bin/phug-dev check --report --coverage-php-version=${{ matrix.php }}
+      run: vendor/bin/phpunit --coverage-text --coverage-clover=coverage.xml --no-interaction
 
     - name: Coverage
       uses: codecov/codecov-action@v3

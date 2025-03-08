@@ -4,14 +4,20 @@ namespace Phug\Test;
 
 use JsTransformer\JsTransformer;
 use NodejsPhpFallback\NodejsPhpFallback;
+use PHPUnit\Framework\TestCase;
 use Phug\JsTransformerExtension;
 use Phug\JsTransformerFilter;
 use Phug\Phug;
+use PHPUnit_Framework_TestCase;
+
+if (!class_exists(PHPUnit_Framework_TestCase::class)) {
+    class_alias(TestCase::class, PHPUnit_Framework_TestCase::class);
+}
 
 /**
  * @coversDefaultClass \Phug\JsTransformerExtension
  */
-class JsTransformerExtensionTest extends \PHPUnit_Framework_TestCase
+class JsTransformerExtensionTest extends PHPUnit_Framework_TestCase
 {
     protected static function removeDirectory($dir)
     {
