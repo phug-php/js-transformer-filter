@@ -23,6 +23,7 @@ class JsTransformerExtensionTest extends \PHPUnit_Framework_TestCase
                         static::removeDirectory($dir.'/'.$object);
                         continue;
                     }
+
                     // move before delete to avoid Windows too long name error
                     try {
                         @rename($dir.'/'.$object, sys_get_temp_dir().'/to-delete');
