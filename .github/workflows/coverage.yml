@@ -56,12 +56,14 @@ jobs:
       run: vendor/bin/phpunit --coverage-text --coverage-clover=coverage.xml ${{ matrix.php >= 8 && '--no-interaction' || '' }}
 
     - name: Coverage
-      uses: codecov/codecov-action@v3
+      uses: codecov/codecov-action@v5
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
 
     - name: Code Climate Test Reporter
       if: ${{ env.CC_TEST_REPORTER_ID != '' }}
-      run: |
-        cp coverage.xml clover.xml
-        bash <(curl -s https://codecov.io/bash)
+      uses: paambaati/codeclimate-action@v9.0.0
       env:
         CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+      with:
+        coverageLocations: ${{github.workspace}}/coverage.xml:clover
